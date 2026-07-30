@@ -24,23 +24,24 @@ document.getElementById("despedidaForm").addEventListener("submit", function(e) 
     window.open(url, "_blank");
 });
 
-// Contador regresivo
 function actualizarContador() {
-    const evento = new Date("2026-01-16T17:30:00").getTime();
+    const evento = new Date("2027-01-16T17:30:00").getTime(); 
     const ahora = new Date().getTime();
     const diferencia = evento - ahora;
 
     if (diferencia <= 0) {
-        document.getElementById("contador").innerHTML = "¡Es hoy!";
+        document.getElementById("contador").innerHTML = "🔥 ¡Es hoy!";
         return;
     }
 
     const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
 
     document.getElementById("contador").innerHTML =
-        `Faltan ${dias} días, ${horas} horas y ${minutos} min`;
+        `⏳ ${dias} días, ${horas}h ${minutos}m ${segundos}s`;
 }
 
 setInterval(actualizarContador, 1000);
+actualizarContador();
