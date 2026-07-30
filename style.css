@@ -1,0 +1,98 @@
+/* Fondo fuego */
+body {
+    margin: 0;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    background: url('https://i.imgur.com/8bFQJvS.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+}
+
+/* Contenedor */
+.container {
+    max-width: 450px;
+    margin: auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.75);
+    border-radius: 12px;
+    margin-top: 40px;
+    border: 3px solid #ff6a00;
+    box-shadow: 0 0 25px #ff6a00, inset 0 0 15px #ff4500;
+}
+
+/* Título con animación fuego */
+.titulo-fuego {
+    text-align: center;
+    font-size: 36px;
+    color: #ff6a00;
+    animation: fuego 1.5s infinite alternate;
+}
+
+@keyframes fuego {
+    from { text-shadow: 0 0 10px #ff4500; }
+    to { text-shadow: 0 0 25px #ff0000; }
+}
+
+.subtitulo {
+    text-align: center;
+    color: #ffd000;
+    margin-bottom: 20px;
+}
+
+/* Inputs */
+label {
+    display: block;
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 2px solid #ff6a00;
+    background: #1a1a1a;
+    color: white;
+    font-size: 16px;
+}
+
+/* Botón con animación de fuego */
+.btn-fuego {
+    width: 100%;
+    margin-top: 25px;
+    padding: 12px;
+    background: linear-gradient(#ff6a00, #ff4500);
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff6a00;
+    animation: vibrar 0.2s infinite alternate;
+}
+
+@keyframes vibrar {
+    from { transform: translateX(0); }
+    to { transform: translateX(1.5px); }
+}
+
+.btn-fuego:hover {
+    background: linear-gradient(#ffa200, #ff6a00);
+    box-shadow: 0 0 30px #ff4500;
+}
+
+/* Nota */
+.nota {
+    font-size: 14px;
+    margin-top: 10px;
+    color: #cccccc;
+}
+
+/* Contador */
+#contador {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #ffd000;
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despedida de Soltero</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="titulo-fuego">Despedida de Soltero</h1>
+        <h2 class="subtitulo">Karts & Asador</h2>
+
+        <div id="contador"></div>
+
+        <form id="despedidaForm">
+            <label>🔥 Nombre y apellidos</label>
+            <input type="text" id="nombre" required>
+
+            <label>📱 Número de móvil</label>
+            <input type="tel" id="telefono" required pattern="[0-9]{9}" placeholder="Ej: 612345678">
+
+            <label>🏁 ¿Vendrás a la despedida?</label>
+            <select id="asistencia" required>
+                <option value="">Selecciona una opción</option>
+                <option value="Sí">Sí</option>
+                <option value="No">No</option>
+            </select>
+
+            <label>🔥 ¿Algún mote personal?</label>
+            <input type="text" id="mote" placeholder="Opcional">
+
+            <p class="nota">
+                * Si no rellenas el mote, se usará tu nombre y apellidos para el obsequio.
+            </p>
+
+            <button type="submit" class="btn-fuego">Enviar por WhatsApp</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
