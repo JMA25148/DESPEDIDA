@@ -20,8 +20,16 @@ document.getElementById("despedidaForm").addEventListener("submit", function(e) 
 
     const numeroDestino = "622890435"; // ← CAMBIAR AQUÍ
 
-    const url = `https://wa.me/${numeroDestino}?text=${mensaje}`;
+  const url =
+`https://wa.me/${numeroDestino}?text=${mensaje}`;
+
+// Mostrar animación de karts
+document.querySelector(".animacion-karts").style.display = "block";
+
+// Abrir WhatsApp después de la animación
+setTimeout(() => {
     window.open(url, "_blank");
+}, 1200);
 });
 
 function actualizarContador() {
