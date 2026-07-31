@@ -6,7 +6,7 @@ const luces = document.querySelectorAll(".luz");
 const intro = document.getElementById("intro");
 const humo = document.getElementById("humo");
 
-// Intento de autoplay
+// Intento de autoplay (muchos móviles lo bloquean)
 window.addEventListener('load', () => {
     motorV10.play().catch(() => {});
 });
@@ -25,8 +25,9 @@ const intervaloLuces = setInterval(() => {
     } else {
         clearInterval(intervaloLuces);
 
-        // Vibración de pantalla
+        // Vibración de pantalla + motor en el momento exacto
         intro.classList.add("vibrar");
+        motorV10.play();
 
         // Generar humo
         for (let h = 0; h < 6; h++) {
