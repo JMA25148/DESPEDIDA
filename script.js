@@ -2,34 +2,49 @@
 const motorV10 = new Audio('v10.mp3');
 motorV10.volume = 1;
 
-let count = 3;
-const countdownEl = document.getElementById("countdown");
+const luces = document.querySelectorAll(".luz");
+const intro = document.getElementById("intro");
+const humo = document.getElementById("humo");
 
-// Reproducir motor al entrar
+// Intento de autoplay
 window.addEventListener('load', () => {
-    motorV10.play().catch(() => {
-        console.log("Autoplay bloqueado, sonará al pulsar el botón.");
-    });
+    motorV10.play().catch(() => {});
 });
 
-// Cuenta regresiva animada
-const interval = setInterval(() => {
-    count--;
-    if (count === 0) {
-        countdownEl.textContent = "¡A correr!";
-        countdownEl.style.fontSize = "60px";
-    } else {
-        countdownEl.textContent = count;
-    }
-}, 1000);
+// Si falla el autoplay, sonará al primer toque
+window.addEventListener('click', () => {
+    motorV10.play();
+});
 
-// Ocultar intro después de 8 segundos
-setTimeout(() => {
-    document.getElementById("intro").style.opacity = "0";
-    setTimeout(() => {
-        document.getElementById("intro").style.display = "none";
-    }, 1000);
-}, 8000);
+// Encendido progresivo de las 5 luces
+let i = 0;
+const intervaloLuces = setInterval(() => {
+    if (i < luces.length) {
+        luces[i].classList.add("on");
+        i++;
+    } else {
+        clearInterval(intervaloLuces);
+
+        // Vibración de pantalla
+        intro.classList.add("vibrar");
+
+        // Generar humo
+        for (let h = 0; h < 6; h++) {
+            const nube = document.createElement("div");
+            nube.classList.add("humo-nube");
+            nube.style.left = `${50 + h * 40}px`;
+            humo.appendChild(nube);
+        }
+
+        // Ocultar intro
+        setTimeout(() => {
+            intro.style.opacity = "0";
+            setTimeout(() => {
+                intro.style.display = "none";
+            }, 800);
+        }, 1500);
+    }
+}, 700);
 
 
 // Envío por WhatsApp
