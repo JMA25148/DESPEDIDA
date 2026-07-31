@@ -24,10 +24,10 @@ body {
     text-align: center;
     font-size: 36px;
     color: #ff6a00;
-    animation: fuego 1.5s infinite alternate;
+    animation: fuegoTitulo 1.5s infinite alternate;
 }
 
-@keyframes fuego {
+@keyframes fuegoTitulo {
     from { text-shadow: 0 0 10px #ff4500; }
     to { text-shadow: 0 0 25px #ff0000; }
 }
@@ -96,6 +96,48 @@ input, select {
     margin-bottom: 20px;
     color: #ffd000;
 }
+
+/* CONTENEDOR DE LOS KARTS (IMPORTANTE) */
+.animacion-karts {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    margin-top: 20px;
+    display: none; /* Esto evita que se vean siempre */
+}
+
+/* KARTS */
+.kart {
+    position: absolute;
+    width: 120px;
+    opacity: 0;
+}
+
+/* Entrada desde la izquierda */
+.kart-left {
+    left: -150px;
+    bottom: 0;
+    animation: kartLeft 1s forwards;
+}
+
+/* Entrada desde la derecha */
+.kart-right {
+    right: -150px;
+    bottom: 0;
+    animation: kartRight 1s forwards;
+}
+
+@keyframes kartLeft {
+    0% { left: -150px; opacity: 0; }
+    100% { left: 30%; opacity: 1; }
+}
+
+@keyframes kartRight {
+    0% { right: -150px; opacity: 0; }
+    100% { right: 30%; opacity: 1; }
+}
+
 /* FUEGO detrás del kart */
 .kart::after {
     content: "";
@@ -107,7 +149,7 @@ input, select {
     background: radial-gradient(circle, #ffea00 0%, #ff6a00 40%, #ff0000 70%);
     filter: blur(6px);
     opacity: 0;
-    animation: fuego 1s forwards;
+    animation: fuegoKart 1s forwards;
 }
 
 /* HUMO detrás del kart */
@@ -121,15 +163,15 @@ input, select {
     background: radial-gradient(circle, rgba(200,200,200,0.8), rgba(80,80,80,0.4));
     filter: blur(8px);
     opacity: 0;
-    animation: humo 1s forwards;
+    animation: humoKart 1s forwards;
 }
 
-@keyframes fuego {
+@keyframes fuegoKart {
     0% { opacity: 0; transform: scale(0.5); }
     100% { opacity: 1; transform: scale(1.4); }
 }
 
-@keyframes humo {
+@keyframes humoKart {
     0% { opacity: 0; transform: translateX(0) scale(0.7); }
     100% { opacity: 0.8; transform: translateX(-20px) scale(1.2); }
 }
