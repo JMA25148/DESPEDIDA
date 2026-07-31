@@ -1,3 +1,37 @@
+// INTRO + SONIDO V10
+const motorV10 = new Audio('v10.mp3');
+motorV10.volume = 1;
+
+let count = 3;
+const countdownEl = document.getElementById("countdown");
+
+// Reproducir motor al entrar
+window.addEventListener('load', () => {
+    motorV10.play().catch(() => {
+        console.log("Autoplay bloqueado, sonará al pulsar el botón.");
+    });
+});
+
+// Cuenta regresiva animada
+const interval = setInterval(() => {
+    count--;
+    if (count === 0) {
+        countdownEl.textContent = "¡A correr!";
+        countdownEl.style.fontSize = "60px";
+    } else {
+        countdownEl.textContent = count;
+    }
+}, 1000);
+
+// Ocultar intro después de 8 segundos
+setTimeout(() => {
+    document.getElementById("intro").style.opacity = "0";
+    setTimeout(() => {
+        document.getElementById("intro").style.display = "none";
+    }, 1000);
+}, 8000);
+
+
 // Envío por WhatsApp
 document.getElementById("despedidaForm").addEventListener("submit", function(e) {
     e.preventDefault();
@@ -18,20 +52,15 @@ document.getElementById("despedidaForm").addEventListener("submit", function(e) 
         "¿Vendrá?: " + asistencia + "%0A" +
         "Mote/Obsequio: " + mote;
 
-    const numeroDestino = "622890435"; // ← CAMBIAR AQUÍ
+    const numeroDestino = "622890435";
 
-  const url =
-`https://wa.me/${numeroDestino}?text=${mensaje}`;
+    const url = `https://wa.me/${numeroDestino}?text=${mensaje}`;
 
-// Mostrar animación de karts
-document.querySelector(".animacion-karts").style.display = "block";
-
-// Abrir WhatsApp después de la animación
-setTimeout(() => {
     window.open(url, "_blank");
-}, 1200);
 });
 
+
+// Contador
 function actualizarContador() {
     const evento = new Date("2027-01-16T17:30:00").getTime(); 
     const ahora = new Date().getTime();
