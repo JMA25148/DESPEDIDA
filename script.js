@@ -2,6 +2,9 @@
 const motorV10 = new Audio('v10.mp3');
 motorV10.volume = 1;
 
+// Control para que el motor solo suene una vez
+let motorYaSonado = false;
+
 const luces = document.querySelectorAll(".luz");
 const intro = document.getElementById("intro");
 const humo = document.getElementById("humo");
@@ -9,11 +12,6 @@ const humo = document.getElementById("humo");
 // Intento de autoplay (muchos móviles lo bloquean)
 window.addEventListener('load', () => {
     motorV10.play().catch(() => {});
-});
-
-// Si falla el autoplay, sonará al primer toque
-window.addEventListener('click', () => {
-    motorV10.play();
 });
 
 // Encendido progresivo de las 5 luces
@@ -25,9 +23,13 @@ const intervaloLuces = setInterval(() => {
     } else {
         clearInterval(intervaloLuces);
 
-        // Vibración de pantalla + motor en el momento exacto
+        // Vibración de pantalla + motor solo una vez
         intro.classList.add("vibrar");
-        motorV10.play();
+
+        if (!motorYaSonado) {
+            motorV10.play();
+            motorYaSonado = true;
+        }
 
         // Generar humo
         for (let h = 0; h < 6; h++) {
